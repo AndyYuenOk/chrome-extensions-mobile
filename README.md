@@ -137,13 +137,19 @@ AdGuard https://liteapks.com/adguard-2.html
 
 ## DNS 模式【重要】
 
-这里有两种方式配合 AdGuard 使用，FakeIp 和 RedirHost 模式，哪种方式使用正常体验好，就使用哪种
+这里有两种方式配合 AdGuard 使用，FakeIp 和 RedirHost 模式，按需配置
 
-### FakeIp 模式，对于需要代理应用来说，少一次 dns 解析请求，返回的都是假 ip，理论上会更快
+推荐使用 RedirHost 模式
+
+### FakeIp 模式
+
+- 对于需要代理应用来说，少一次 dns 解析请求，返回的都是假 ip，理论上会更快
 
 - 在 FakeIp 模式下，需要在【Fakeip过滤】中添加 local.adguard.org 域名
 
-### RedirHost 模式，对于需要代理应用来说，多一次 dns 解析请求，返回的都是真 ip，理论上问题更少
+### RedirHost 模式
+
+- 对于需要代理应用来说，多一次 dns 解析请求，返回的都是真 ip，理论上问题更少
 
 - 【遵守规则】DNS连接跟随rules,需配置proxy-server-nameserver，开启此选项
 
@@ -156,8 +162,6 @@ AdGuard https://liteapks.com/adguard-2.html
 - 覆写订阅配置
 
   - 【配置】->【订阅菜单】->【更多】->【覆写】->【脚本】，选择刚才添加的脚本
-
-推荐使用 RedirHost 模式
 
 ### 开启代理服务
 
