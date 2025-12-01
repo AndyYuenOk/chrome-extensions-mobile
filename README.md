@@ -133,23 +133,23 @@ AdGuard https://liteapks.com/adguard-2.html
 
 ## DNS 模式【重要】
 
-这里有两种方式配合 AdGuard 使用，FakeIp 和 RedirHost 模式，按需配置
+这里有两种方式配合 AdGuard 使用，fakeIp 和 normal 模式，按需配置
 
-推荐使用 RedirHost 模式
+推荐使用 normal 模式
 
-### FakeIp 模式
+### fakeIp 模式
 
 - 对于需要代理应用来说，少一次 dns 解析请求，返回的都是假 ip，理论上会更快
 
-- 在 FakeIp 模式下，需要在【Fakeip过滤】中添加 local.adguard.org 域名
+- 在 fakeIp 模式下，需要在【Fakeip过滤】中添加 local.adguard.org 域名
 
-### RedirHost 模式
+### normal 模式
 
 - 对于需要代理应用来说，多一次 dns 解析请求，返回的都是真 ip，理论上问题更少
 
 - 【遵守规则】DNS连接跟随rules,需配置proxy-server-nameserver，开启此选项
 
-- 【DNS模式】选择 redirHost
+- 【DNS模式】选择 normal
 
 - 开启 sniffer
 
@@ -179,11 +179,11 @@ AdGuard https://liteapks.com/adguard-2.html
 
 ## 只过滤广告的应用不走代理服务器
 
-- FlClash RedirHost 模式
+- FlClash normal dns 模式
 
 过滤广告的应用，如小红书、哔哩哔哩等，建议关闭【通过代理路由应用程序】，这样应用不会走代理服务器，速度更快
 
-- FlClash FakeIp 模式
+- FlClash fakeIp dns 模式
 
 过滤广告的应用必须开启【通过 adguard 路由流量】选项，因为 clash 返回的都是假 ip，应用请求必须代理到 clash
 
