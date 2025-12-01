@@ -107,29 +107,35 @@ AdGuard 必须是付费版本，安装完成后，先不要打开，先授权
 
 ---
 
-# adguard 过滤广告 + clash 代理
+# AdGuard 过滤广告 + FlClash 代理
 
-这里坑还是很多的，如果配置不好使用体验很差，这里教程使用 adguar 4.14.15，FlCash 0.8.91，其他版本不保证
+这里教程使用 FlCash 0.8.91、AdGuard 4.14.15 版本，其他版本不保证
 
-### flclash
+FlClash https://t.me/FlClash/1100
+
+AdGuard https://liteapks.com/adguard-2.html
+
+# FlClash
 
 这里是全新安装后的默认配置，没有修改任何配置，配置不对容易出问题
 
-首先添加自己的订阅
+## 基础配置
 
-关闭通过VpnService自动路由系统所有流量【工具】->【进阶配置】->【网络】->【VPN】
+1. 添加自己的订阅
 
-开启覆盖配置中的DNS选项【工具】->【进阶配置】->【DNS】->【覆写DNS】
+2. 【工具】->【进阶配置】->【网络】->【VPN】关闭通过VpnService自动路由系统所有流量
 
-### 【重要】DNS 模式
+3. 【工具】->【进阶配置】->【DNS】->【覆写DNS】开启覆盖配置中的DNS选项
 
-这里有两种方式配合 adguard 使用，FakeIp 和 RedirHost 模式，哪种方式使用正常体验好，就使用哪种
+## DNS 模式【重要】
 
-FakeIp 模式，对于需要代理应用来说，少一次 dns 解析请求，返回的都是假 ip，理论上会更快
+这里有两种方式配合 AdGuard 使用，FakeIp 和 RedirHost 模式，哪种方式使用正常体验好，就使用哪种
+
+### FakeIp 模式，对于需要代理应用来说，少一次 dns 解析请求，返回的都是假 ip，理论上会更快
 
 - 在 FakeIp 模式下，需要在【Fakeip过滤】中添加 local.adguard.org 域名
 
-RedirHost 模式，对于需要代理应用来说，多一次 dns 解析请求，返回的都是真 ip，使用中问题少些
+### RedirHost 模式，对于需要代理应用来说，多一次 dns 解析请求，返回的都是真 ip，理论上问题更少
 
 - 【遵守规则】DNS连接跟随rules,需配置proxy-server-nameserver，开启此选项
 
@@ -137,28 +143,40 @@ RedirHost 模式，对于需要代理应用来说，多一次 dns 解析请求�
 
 - 开启 sniffer
 
-- 【工具】->【进阶配置】->【脚本】->【添加】[sniffer 脚本](https://raw.githubusercontent.com/AndyYuenOk/mobile-chrome-extensions/refs/heads/main/sniffer.js)
+  - 【工具】->【进阶配置】->【脚本】->【添加】[sniffer 脚本](https://raw.githubusercontent.com/AndyYuenOk/mobile-chrome-extensions/refs/heads/main/sniffer.js)
 
 - 覆写订阅配置
 
-- 【配置】->【订阅菜单】->【更多】->【覆写】->【脚本】，选择刚才添加的脚本
+  - 【配置】->【订阅菜单】->【更多】->【覆写】->【脚本】，选择刚才添加的脚本
 
 推荐使用 RedirHost 模式
 
-最后在仪表盘开启代理服务
+### 在仪表盘开启代理服务
 
-### adguard
+# AdGuard
 
-关闭所有应用代理，【应用管理】->【暂停所有流量的路由】，只开启需要过滤广告的应用，如小红书、哔哩哔哩等，翻墙应用Play Store、Chrome等，避免其他应用使用出现问题。
+## 设置应用代理
 
-过滤广告的应用不设置代理，如小红书、哔哩哔哩等，建议关闭【通过代理路由应用程序】，这样应用不会走代理服务器，避免打不开问题
+关闭所有应用代理，【应用管理】->【暂停所有流量的路由】
 
-设置代理服务器
+只开启需要过滤广告的应用，如小红书、哔哩哔哩等，翻墙应用Play Store、Chrome等，避免其他应用使用出现问题。
+
+## 设置代理服务器
 
 点击【设置】->【过滤】->【网络】->【代理】->【代理服务器】->【添加代理】
 
 代理类型 SOCKS5， 代理主机 127.0.0.1，代理端口 7890，开启【通过 SOCKS5 路由 UDP】，关闭【使用 FakeDNS】
 
-flclash RedirHost 模式下，过滤广告的应用可以关闭【通过 adguard 路由流量】选项，体验会好些
+## 只过滤广告的应用不走代理服务器
 
-## 如果出现应用打不开，上网慢，主要还是 DNS 的问题
+- FlClash RedirHost 模式
+
+过滤广告的应用，如小红书、哔哩哔哩等，建议关闭【通过代理路由应用程序】，这样应用不会走代理服务器，速度更快
+
+- FlClash FakeIp 模式
+
+过滤广告的应用必须开启【通过 adguard 路由流量】选项，因为 clash 返回的都是假 ip，应用请求必须代理到 clash
+
+---
+
+* 如果出现应用打不开，上网慢，主要还是 DNS 的问题
