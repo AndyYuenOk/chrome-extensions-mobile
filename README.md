@@ -139,13 +139,13 @@ AdGuard https://liteapks.com/adguard-2.html
 
 ### fakeIp 模式
 
-- 对于需要代理应用来说，少一次 dns 解析请求，返回的都是假 ip，理论上会更快
+- 对于需要代理应用来说，少一次 dns 解析请求，返回的都是假 ip
 
 - 在 fakeIp 模式下，需要在【Fakeip过滤】中添加 local.adguard.org 域名
 
 ### normal 模式
 
-- 对于需要代理应用来说，多一次 dns 解析请求，返回的都是真 ip，理论上问题更少
+- 对于需要代理应用来说，多一次 dns 解析请求，返回的都是真 ip
 
 - 【遵守规则】DNS连接跟随rules,需配置proxy-server-nameserver，开启此选项
 
